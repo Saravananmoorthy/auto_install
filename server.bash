@@ -58,7 +58,7 @@ printf "start to install foreman........ \n"
 printf "=====================================\n\n\n\n"
 
 #yum -y install epel-release 
-yum install -y puppet-server postgresql-server foreman-proxy foreman-postgresql tftp-server syslinux httpd foreman-cli mod_passenger mod_ssl
+yum install -y puppet-server postgresql-server foreman-proxy foreman-postgresql tftp-server syslinux httpd foreman-cli mod_passenger mod_ssl tfm-rubygem-passenger-native
 yum -y install foreman-installer
 foreman-installer
 
