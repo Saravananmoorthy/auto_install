@@ -76,7 +76,7 @@ printf "=====================================\n\n\n\n\n\n\n\n\n"
 
 # service iptalbes stop
 # chkconfig iptalbes off
-/sbin/iptabes -I INPUT -p tcp --dport 443 -j ACCEPT
+/sbin/iptables -I INPUT -p tcp --dport 443 -j ACCEPT
 /etc/init.d/iptables save
 /etc/init.d/iptables status
 exit 0
