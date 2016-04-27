@@ -7,16 +7,10 @@ printf "starting to install and please wait  \n"
 printf "=====================================\n\n\n\n\n\n\n\n"
 
 
-PUPPET_BIN_DIR="/usr/bin/"
 PUPPET_SERVER="`hostname --fqdn`"
 PUPPET_SERVER_IP="`/sbin/ifconfig -a|grep inet|grep -v 127.0.0.1|grep -v inet6|awk '{print $2}'|tr -d "addr:"`"
 
-printf "=====================================\n"
-printf "service iptalbes stop ..........  \n"
-printf "=====================================\n\n\n\n\n\n\n\n\n"
 
-service iptalbes stop
-chkconfig iptalbes off
 
 printf "=====================================\n"
 printf "add master to /etc/hosts ..........  \n"
@@ -76,4 +70,13 @@ foreman-installer
 # mv *.repo /etc/yum.repos.d/
 # mv /etc/yum.repos.d/puppetlabs.repo /etc/yum.repos.d/bak
 
+printf "=====================================\n"
+printf "set iptalbes for foreman(port:443) \n"
+printf "=====================================\n\n\n\n\n\n\n\n\n"
+
+# service iptalbes stop
+# chkconfig iptalbes off
+/sbin/iptalbes -I INPUT -p tcp --dport 443 -j ACCEPT
+/etc/init.d/iptables save
+/etc/init.d/iptables status
 exit 0
