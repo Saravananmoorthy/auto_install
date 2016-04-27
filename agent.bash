@@ -3,8 +3,8 @@ set -u
 set -e
 
 PUPPET_BIN_DIR="/usr/bin/"
-PUPPET_SERVER="puppetmaster.gd1.qingcloud.com"
-PUPPET_SERVER_IP="192.168.104.2"
+PUPPET_SERVER="master.test.com"
+PUPPET_SERVER_IP="172.16.171.145"
 
 
 printf "=====================================\n"
@@ -20,22 +20,26 @@ printf "add puppet yum for this agent.......\n"
 printf "=====================================\n"
 
 
+mkdir -p /etc/yum.repos.d/bak
+cd /etc/yum.repos.d/
+mv *.repo ./bak
+
 cat /etc/redhat-release > /tmp/redhat-release
 
 if grep  'release 5' /tmp/redhat-release; then
-  cat >/etc/yum.repos.d/puppet.repo <<EOF
-[puppet]
-name=puppet
-baseurl=http://192.168.104.2/el5
+  cat >/etc/yum.repos.d/puppetlabs.repo <<EOF
+[puppetlabs]
+name=puppetlabs
+baseurl=http://172.16.171.145/repo5
 enable=1
 gpgcheck=0
 priority=1
 EOF
 elif grep  'release 6' /tmp/redhat-release; then
-  cat >/etc/yum.repos.d/puppet.repo <<EOF
-[puppet]
-name=puppet
-baseurl=http://192.168.104.2/foreman
+  cat >/etc/yum.repos.d/puppetlabs.repo <<EOF
+[puppetlabs]
+name=puppetlabs
+baseurl=http://172.16.171.145/repo6
 enable=1
 gpgcheck=0
 priority=1
@@ -43,7 +47,6 @@ EOF
 else
   printf "the OS release is not supported by this script \n"
 fi
-
 
 
 
