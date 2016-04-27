@@ -63,13 +63,13 @@ yum -y install foreman-installer
 foreman-installer
 
 
-# printf "=========================================\n"
-# printf "use default system  yum for this computer\n"
-# printf "=========================================\n"
+ printf "=========================================\n"
+ printf "remove extra  yum for this computer\n"
+ printf "=========================================\n"
 
-# cd /etc/yum.repos.d/bak
-# mv *.repo /etc/yum.repos.d/
-# mv /etc/yum.repos.d/puppetlabs.repo /etc/yum.repos.d/bak
+cd /etc/yum.repos.d
+mv ./rhscl-* ./bak/
+mv epel* ./bak
 
 printf "=====================================\n"
 printf "set iptalbes for foreman(port:443) \n"
