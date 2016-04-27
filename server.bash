@@ -57,7 +57,7 @@ printf "=====================================\n"
 printf "start to install foreman........ \n"
 printf "=====================================\n\n\n\n\n\n\n\n\n"
 
-yum -y install epel-release 
+#yum -y install epel-release 
 yum -y install foreman-installer
 foreman-installer
 
