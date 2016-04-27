@@ -4,7 +4,7 @@ set -e
 
 printf "=====================================\n"
 printf "starting to install and please wait  \n"
-printf "=====================================\n\n\n\n\n\n\n\n"
+printf "=====================================\n\n\n\n"
 
 
 PUPPET_SERVER="`hostname --fqdn`"
@@ -14,7 +14,7 @@ PUPPET_SERVER_IP="`/sbin/ifconfig -a|grep inet|grep -v 127.0.0.1|grep -v inet6|a
 
 printf "=====================================\n"
 printf "add master to /etc/hosts ..........  \n"
-printf "=====================================\n\n\n\n\n\n\n\n\n"
+printf "=====================================\n\n\n\n"
 
 if ! grep "${PUPPET_SERVER}" /etc/hosts; then
   echo "${PUPPET_SERVER_IP}     ${PUPPET_SERVER}" >> /etc/hosts 
@@ -22,7 +22,7 @@ fi
 
 printf "=====================================\n"
 printf "add native yum for this computer.......\n"
-printf "=====================================\n\n\n\n\n\n\n\n\n"
+printf "=====================================\n\n\n\n"
 
 mkdir -p /etc/yum.repos.d/bak
 cd /etc/yum.repos.d/
@@ -55,7 +55,7 @@ fi
 
 printf "=====================================\n"
 printf "start to install foreman........ \n"
-printf "=====================================\n\n\n\n\n\n\n\n\n"
+printf "=====================================\n\n\n\n"
 
 #yum -y install epel-release 
 yum -y install foreman-installer
@@ -72,7 +72,7 @@ foreman-installer
 
 printf "=====================================\n"
 printf "set iptalbes for foreman(port:443) \n"
-printf "=====================================\n\n\n\n\n\n\n\n\n"
+printf "=====================================\n\n\n\n"
 
 # service iptalbes stop
 # chkconfig iptalbes off
